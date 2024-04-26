@@ -1,0 +1,86 @@
+
+"""
+noor abdelsalam - 320220191
+"""
+
+class employee:
+    empnum = 0
+    ls = list()
+    def __init__(self, empname, empage, empsal):
+        self.empname = empname
+        self.empage = empage
+        self.empsal = empsal
+    def addemp(self):
+        employee.ls.append(self)
+        #self.empnum+=1
+    def emplist(self):
+        return employee.ls
+    def deleteage(self,empage):
+        for x in employee.ls:
+            if (x.getempage() == empage):
+                print("deleting ", x.getempname(), "...\n")
+                employee.ls.remove(x)
+                
+    def updatesal(self,empname,empsal):
+       for x in employee.ls:
+           if (x.getempname() == empname):
+               x.empsal = empsal
+               return True
+       return False
+    def setempname(self,empname):
+        self.empname = empname
+    def getempname(self):
+        return self.empname
+    def setempage(self,empage):
+        self.empage = empage
+    def getempage(self):
+        return self.empage
+    def setempsal(self,empsal):
+        self.empsal = empsal
+    def getempsal(self):
+        return self.empsal
+    def __str__(self):
+        return "employee: "+ str(self.empname)+" has age "+ str(self.empage)+" and salary "+ str(self.empsal)
+        
+    
+    
+emp1 = employee("", 0, 0)
+
+x = True
+while x:
+    print("\nprogram options:\n 1)Add employee\n 2)List all employees\n 3)Delete all age range\n 4)Update salary by name\n 5)End program")
+    option = int(input("\nenter your choice: "))
+    if option == 1 :
+        empname = input("enter name: ")
+        empage = int(input("enter age: "))
+        empsal = int(input("enter salary: "))
+        emp = employee(empname, empage, empsal)
+        emp.addemp()
+        emp1.empnum+=1
+    elif option == 2 :
+        if emp1.empnum <1:
+            print("\nerror: no employees\n")
+        else: 
+            print("***employee list ***")
+            for x in emp1.emplist():
+                print(x)
+    elif option == 3:
+        empage = int(input("\nenter age: "))
+        emp1.deleteage(empage)
+    elif option == 4:
+        empname = input("enter name: ")
+        empsal = int(input("enter new salary: "))
+        i = emp1.updatesal(empname,empsal)
+        if (i == False):
+            print( "employee not found...")
+        else:
+            print("updating ", empname, "'s salary...")
+    elif option == 5:
+        print("ending program...")
+        break
+"""
+mariam taher - 320220201
+raghdan elhamy - 320220190
+noor abdelsalam - 320220191
+nouran mohamed elsharkawy - 320220249
+"""
